@@ -1,0 +1,24 @@
+CC = gcc
+CFLAGS = -Wall -g
+
+OBJ = main.o area.o aresta.o volume.o
+
+all: cubo
+
+cubo: $(OBJ)
+	$(CC) -o cubo $(OBJ)
+
+main.o: main.c area.h aresta.h volume.h
+	$(CC) $(CFLAGS) -c main.c
+
+area.o: area.c area.h
+	$(CC) $(CFLAGS) -c area.c
+
+aresta.o: aresta.c aresta.h
+	$(CC) $(CFLAGS) -c aresta.c
+
+volume.o: volume.c volume.h
+	$(CC) $(CFLAGS) -c volume.c
+
+clean:
+	rm -f *.o cubo
